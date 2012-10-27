@@ -1,0 +1,37 @@
+Vagrant::Config.run do |config|
+
+	config.vm.box = "precise64"
+	config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+	
+	config.vm.network :hostonly, "10.10.50.11"
+	config.vm.forward_port 5432, 11432
+	config.vm.forward_port 8080, 11180
+	
+	config.vm.customize ["modifyvm", :id, "--name", "devbox", "--memory", 2048]
+	
+	config.vm.provision :chef_solo do |chef|
+		chef.cookbooks_path = "cookbooks"
+
+  		chef.add_recipe "apt"
+      
+		chef.add_recipe "postgresql"
+		chef.add_recipe "postgresql::server"
+
+		chef.add_recipe "java"
+		chef.add_recipe "jboss"
+
+		chef.json = {
+			:java => {
+				:install_flavor => "oracle",
+				
+			},
+			:postgresql => {
+				:password => {
+					:postgres => "postgres"
+				},
+				:listen_addresses => "*"
+				
+			}
+		}
+    end
+end
