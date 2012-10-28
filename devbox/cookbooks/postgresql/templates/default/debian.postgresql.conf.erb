@@ -259,7 +259,7 @@ max_fsm_pages = 153600			# min max_fsm_relations*16, 6 bytes each
 					# But such truncation only occurs on
 					# time-driven rotation, not on restarts
 					# or size-driven rotation.  Default is
-					# off, meaning append to existing files
+					# off, meaning append to existing filesserver_encoding = 'UTF-8
 					# in all cases.
 #log_rotation_age = 1d			# Automatic rotation of logfiles will
 					# happen after that time.  0 to disable.
@@ -285,7 +285,7 @@ max_fsm_pages = 153600			# min max_fsm_relations*16, 6 bytes each
 					#   warning
 					#   error
 
-#log_min_messages = notice		# values in order of decreasing detail:
+#log_min_messages = notice		# values in order of decreasing detail:server_encoding = 'UTF-8
 					#   debug5
 					#   debug4
 					#   debug3
@@ -439,15 +439,15 @@ datestyle = 'iso, mdy'
 					# You can create your own file in
 					# share/timezonesets/.
 #extra_float_digits = 0			# min -15, max 2
-#client_encoding = sql_ascii		# actually, defaults to database
+#client_encoding = 'UTF-8'		# actually, defaults to database
 					# encoding
 
 # These settings are initialized by initdb, but they can be changed.
-#lc_messages = 'en_US.UTF-8'		# locale for system error message
+lc_messages = 'en_US.UTF-8'		# locale for system error message
 					# strings
-#lc_monetary = 'en_US.UTF-8'		# locale for monetary formatting
-#lc_numeric = 'en_US.UTF-8'		# locale for number formatting
-#lc_time = 'en_US.UTF-8'		# locale for time formatting
+lc_monetary = 'en_US.UTF-8'		# locale for monetary formatting
+lc_numeric = 'en_US.UTF-8'		# locale for number formatting
+lc_time = 'en_US.UTF-8'		# locale for time formatting
 
 # default configuration for text search
 default_text_search_config = 'pg_catalog.english'
@@ -497,3 +497,4 @@ default_text_search_config = 'pg_catalog.english'
 #------------------------------------------------------------------------------
 
 #custom_variable_classes = ''		# list of custom variable class names
+
